@@ -1,5 +1,6 @@
 var selectedDim = 0;
 var disabled = false; //boolean for click event for overlay
+var disabledCell = false;
 var restarting = false; //boolean for if restarting whole game
 
 var dialogOverlay = document.getElementById("dialogOverlay");
@@ -329,44 +330,50 @@ function changeHover() {
 
 /* handles the function that executes when clicking on one of the cells*/
 function handler() {
-  const tds = document.querySelectorAll('td');
-  /* if cell is empty && if num of total moves doesnt exceed the num of possible moves */
-  if ( tds[this.id-1].innerHTML == " " &&  numMovesTotal < selectedDim*selectedDim ) {
-    if ( currPlayer == 1 ) {
-      movesByX.push(parseInt(this.id));
-      movesByX.sort(function(a, b) {return a - b;});
-      tds[this.id-1].innerHTML = "X";
-    } else {
-      movesByO.push(parseInt(this.id));
-      movesByO.sort(function(a, b) {return a - b;});
-      tds[this.id-1].innerHTML = "O";
-    }
-    /* check whether the last move resulted in a win */
-    if ( checkForWin() ) {
+  sleep(50).then(() => {
+    const tds = document.querySelectorAll('td');
+    /* if cell is empty && if num of total moves doesnt exceed the num of possible moves */
+    if ( tds[this.id-1].innerHTML == " " &&  numMovesTotal < selectedDim*selectedDim && !disabledCell) {
+      disabledCell = true;
       if ( currPlayer == 1 ) {
-        scoreX.innerHTML++;
-        overlayMsg(nameX.innerHTML+ " won!");
+        movesByX.push(parseInt(this.id));
+        movesByX.sort(function(a, b) {return a - b;});
+        tds[this.id-1].innerHTML = "X";
       } else {
-        scoreO.innerHTML++;
-        overlayMsg(nameO.innerHTML+ " won!");
+       movesByO.push(parseInt(this.id));
+       movesByO.sort(function(a, b) {return a - b;});
+       tds[this.id-1].innerHTML = "O";
       }
-      setTimeout(restartARound, 1050);
-    } else {
-      currPlayer = -currPlayer;
-      numMovesTotal++;
-      changeHover();
+      /* check whether the last move resulted in a win */
+      if ( checkForWin() ) {
+       if ( currPlayer == 1 ) {
+         scoreX.innerHTML++;
+         overlayMsg(nameX.innerHTML+ " won!");
+       } else {
+         scoreO.innerHTML++;
+         overlayMsg(nameO.innerHTML+ " won!");
+       }
+       setTimeout(restartARound, 1050);
+      } else {
+        currPlayer = -currPlayer;
+        numMovesTotal++;
+        changeHover();
+      }
     }
-  }
-  /* stop round if reached maximum number of total moves*/
-  if ( numMovesTotal == selectedDim*selectedDim ) {
-    overlayMsg("it's a tie!");
-    sleep(1050).then(() => { restartARound(); });
-  }
+    /* stop round if reached maximum number of total moves*/
+    if ( numMovesTotal == selectedDim*selectedDim ) {
+      overlayMsg("it's a tie!");
+      sleep(1050).then(() => { restartARound(); });
+    }
+    sleep(700).then(() => {
+      disabledCell = false;
+    });
+  });
 }
 
 /* displays an overlay with a message */
 function overlayMsg(txt) {
-  sleep(1000).then(() => {
+  sleep(600).then(() => {
     overlay.className = "visible";
   });
   randomNum.innerHTML = txt;
