@@ -1,0 +1,283 @@
+body {
+  background-color: white;
+  font: 1em/100%;
+  font-family: trebuchet ms, calibri, arial;
+  text-align: center;
+  margin: 0 auto;
+}
+/* style name buttons */
+.nameButton {
+  transition: 0.3s;
+  color: white;
+  cursor: pointer;
+  width: 230px;
+  height: 40px;
+  padding: 10px 15px 10px;
+  position: absolute;
+  top: 20px;
+  text-transform: uppercase;
+  display: inline-block;
+  font-size: 1.2em;
+  letter-spacing: 4px;
+  border-bottom: 3px solid transparent;  
+  border-top: 3px solid transparent; 
+  overflow: hidden;
+}
+.nameTooBig {
+  font-size: 0.7em;
+  padding: 5px 0px;
+}
+#play-X {
+  background-color: #ffe0ac;
+  left: 1%;
+} #play-X:hover {
+  background: white;
+  border-color: #ffe0ac;
+  color: #868686;
+}
+#play-O {
+  background-color: #ffacb7;
+  right: 1%;
+} #play-O:hover {
+  background: white;
+  border-color: #ffacb7;
+  color: #868686;
+}
+.score {
+  font: 3em Monaco;
+  display: inline-block;
+  padding: 0px 35px;
+  position: absolute;
+  top: 105px;
+} #score-X {
+  left: 85px;
+} #score-O {
+  right: 85px;
+}
+.gameArea {
+  position: absolute;
+  top: 12.8%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* style start button */
+.startButton {
+  font-style: italic;
+  color: black;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  /* X-coordinate, Y-coordinate, blur radius, color of the shadow */
+  text-shadow:2px 1px 0px #ffe0ac, -2px 1px 0px #ffacb7;
+  display: inline-block;
+  font-size: 1.5em;
+}
+/* hide original select box */
+.gameOptions select {
+  display: none;
+}
+/* style icon */
+.selectedOpt::before {
+  content: "\f0dc";
+  font-family: FontAwesome;
+  position: absolute;
+  right: 5px;
+  width: 16%;
+  height: 100%;
+  text-align: center;
+  font-size: 1em;
+  line-height: 15px;
+  color: #b0b0b0;
+  pointer-events: none;
+}
+.selectedOpt:hover::before {
+  color: #d6d6d6;
+}
+/* style the items */
+.selectOpts div, .selectedOpt {
+  /* make text unselectable: */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  background-color: white;
+  /*    top, right, bottom, left    */
+  padding: 10px 10px 10px 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  width: 225px;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  cursor: pointer;
+}
+/* style list of items */
+.selectOpts {
+  position: absolute;
+  top: 48px;
+  left: 15px;
+  z-index: 1;
+}
+/* hide the list of items when the select box is closed */
+.selectHide {
+  display: none;
+}
+.selectOpts div:hover {
+  background-color: #b0b0b0;
+}
+
+#dialogOverlay {
+	display: none;
+	opacity: 0.7;
+	position: fixed;
+  top: 0;
+  left: 0;
+	background: #ffffff;
+  height: 100vh;
+  width: 100vw;
+	z-index: 5;
+}
+/* style dialog box */
+#dialogBox {
+	display: none;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+	background: #d6d6d6;
+	width: 400px;
+	z-index: 6;
+}
+#dialogBox > div {
+  background: #ffffff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid #ffe0ac;  
+  border-top: 2px solid #ffacb7;
+  border-right: 2px solid #ffe0ac;
+  border-left: 2px solid #ffacb7;
+}
+#dialogBody {
+  background: #fefefe;
+  padding: 20px;
+}
+#dialogFoot {
+  background: #fefefe;
+  padding: 5px;
+  text-align: center;
+  border-top: 1px solid #d6d6d6;
+}
+.fa-exclamation-circle {
+  font-size: 1.8em;
+  padding: 15px 0px 0px 0px;
+  color: #c9c9c9;
+}
+.board {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  transform: translate(-50%);
+  text-align: center;
+}
+table, tr, td {
+  /* make text unselectable: */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  border: 1px dotted grey;
+  border-collapse: collapse;
+  transition: 0.2s;
+}
+table td:hover {
+  background: #b5b5b5;
+  background: var(--td-background-color);
+  cursor: pointer;
+}
+
+#overlay {
+	position: fixed;
+  top: 0;
+  left: 0;
+	background: #acdbff;
+  height: 100vh;
+  width: 100vw;
+	z-index: 5;
+  pointer-events: none;
+} 
+.overlayTxt {
+  color: #ffffff;
+  letter-spacing: 3px;
+  position: absolute;
+  z-index: 10;
+}
+#mainTxt {
+  font-size: 2.5em;
+  font-style: italic;
+  text-align: left;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+} #rule {
+  font-size: 1.2em;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+} #randomNum {
+  font-size: 2.5em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} #firstPlayer {
+  font-size: 1.7em;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  color: #ffffff;
+  letter-spacing: 3px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+#restart-round {
+  font-size: 3em;
+  font-style: italic;
+  top: 35%;
+  left: 22%;
+  padding: 15px;
+  z-index: 10;
+} #restart-game {
+  font-size: 3em;
+  font-style: italic;
+  top: 50%;
+  right: 22%;
+  padding: 15px;
+  z-index: 10;
+} #changeDim {
+  font-size: 3em;
+  color: #ffffff;
+  letter-spacing: 3px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  z-index: 10;
+}
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.2s linear;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.3s, opacity 0.3s linear;
+} 
