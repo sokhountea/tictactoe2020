@@ -366,7 +366,7 @@ function handler() {
 
 /* displays an overlay with a message */
 function overlayMsg(txt) {
-  sleep(1000).then(() => {
+  sleep(700).then(() => {
     overlay.className = "visible";
   });
   randomNum.innerHTML = txt;
