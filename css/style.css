@@ -167,6 +167,9 @@ body {
   text-align: center;
   border-top: 1px solid #d6d6d6;
 }
+#dialogTop {
+  background: #fefefe;
+}
 .fa-exclamation-circle {
   font-size: 1.8em;
   padding: 15px 0px 0px 0px;
