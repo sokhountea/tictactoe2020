@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <title>Tic Tac Toe 2020</title>
   <link href="css/style.css" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="js/scripts.js" async></script>
 
 </head>
 
 <body>
-  
+
   <div id="dialogOverlay"></div>
   <div id="dialogBox">
     <div>
@@ -20,50 +20,51 @@
       <div id="dialogFoot"></div>
     </div>
   </div>
-  
+
   <div id="overlay" class="hidden">
     <div id="mainTxt" class="overlayTxt"></div>
     <div id="rule" class="overlayTxt"></div>
     <div id="randomNum" class="overlayTxt"></div>
     <div id="firstPlayer" class="hidden"></div>
-    
+
     <div id="restart-round" class="overlayTxt"></div>
     <div id="restart-game" class="overlayTxt"></div>
   </div>
-  
+
   <div id="changeDim" class="hidden"></div>
-  
-  
-  <div id="play-X" class="nameButton" onclick="Prompt.render('Enter your name:<br>','changeName', 'name-X')">Player X:<br>
-    <div id="name-X">NULL</div>
+
+
+  <div id="play-X" class="nameButton" onclick="Prompt.render('Enter your name:<br>','changeName', 'name-X')">Player
+    X:<br>
+    <div id="name-X">Click to enter name</div>
   </div>
   <div id="score-X" class="score">0</div>
-  
-  <div id="play-O" class="nameButton" onclick="Prompt.render('Enter your name:<br>','changeName', 'name-O')">Player O:<br>
-    <div id="name-O">NULL</div>
+
+  <div id="play-O" class="nameButton" onclick="Prompt.render('Enter your name:<br>','changeName', 'name-O')">Player
+    O:<br>
+    <div id="name-O">Click to enter name</div>
   </div>
   <div id="score-O" class="score">0</div>
-  
+
   <div class="gameArea">
-    
-		<div class="gameOptions" style="text-align:left; padding:15px">
-			<select>
+
+    <div class="gameOptions" style="text-align:left; padding:15px">
+      <select>
         <option value="0">Select dimension:</option>
-				<option value="1">3x3 Board</option>
-				<option value="2">4x4 Board</option>
-				<option value="3">5x5 Board</option>
-			</select>
-		</div>
-    
+        <option value="1">3x3 Board</option>
+        <option value="2">4x4 Board</option>
+        <option value="3">5x5 Board</option>
+      </select>
+    </div>
+
     <div class='startButton'>let's start!</div>
-    
+
     <div class="board">
       <table id="table"></table>
     </div>
-    
-	</div>
-  
+
+  </div>
+
 </body>
+
 </html>
-
-
