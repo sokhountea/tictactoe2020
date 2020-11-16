@@ -6,12 +6,10 @@
   <title>Tic Tac Toe 2020</title>
   <link href="css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="js/scripts.js" async></script>
-
 </head>
 
 <body>
-
+  <div id="test"></div>
   <div id="dialogOverlay"></div>
   <div id="dialogBox">
     <div>
@@ -34,13 +32,13 @@
   <div id="changeDim" class="hidden"></div>
 
 
-  <div id="play-X" class="nameButton" onclick="Prompt.render('Enter your name:<br>','changeName', 'name-X')">Player
+  <div id="play-X" class="nameButton" onclick="Prompt.render('Enter your name:<br>', '#name-X')">Player
     X:<br>
     <div id="name-X">Enter name</div>
   </div>
   <div id="score-X" class="score">0</div>
 
-  <div id="play-O" class="nameButton" onclick="Prompt.render('Enter your name:<br>','changeName', 'name-O')">Player
+  <div id="play-O" class="nameButton" onclick="Prompt.render('Enter your name:<br>', '#name-O')">Player
     O:<br>
     <div id="name-O">Enter name</div>
   </div>
@@ -57,14 +55,15 @@
       </select>
     </div>
 
-    <div class='startButton'>let's start!</div>
+    <div id='startButton'>let's start!</div>
 
     <div class="board">
       <table id="table"></table>
     </div>
 
   </div>
-
 </body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="js/scripts.js" async></script>
 
 </html>
